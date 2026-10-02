@@ -1,0 +1,13 @@
+# FizzBuzz del 1 al 15: bloques si / sino anidados
+15 veces
+    indice 1 + =n
+    n 15 % 0 == si
+        "FizzBuzz" mostrar
+    sino n 3 % 0 == si
+        "Fizz" mostrar
+    sino n 5 % 0 == si
+        "Buzz" mostrar
+    sino
+        n mostrar
+    fin fin fin
+fin

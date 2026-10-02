@@ -1,0 +1,7 @@
+# Lee una línea de la entrada y responde
+"¿Cómo te llamas?" mostrar
+entrada =nombre
+nombre longitud 0 == si
+    "anónimo" =nombre
+fin
+"Hola, " nombre mayusculas une "!" une mostrar

@@ -1,0 +1,9 @@
+variable(a) = verdadero
+variable(contador) = 0
+mientras a sea verdadero entonces
+    mostrar(contador)
+    variable(contador) = contador + 1
+    si contador sea 5 entonces
+        variable(a) = falso
+    fin
+fin
