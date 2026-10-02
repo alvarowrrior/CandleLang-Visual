@@ -1,0 +1,4 @@
+# Repite 5 veces; «indice» vale 0, 1, 2, 3, 4
+5 veces
+    "Vela número " indice 1 + une mostrar
+fin

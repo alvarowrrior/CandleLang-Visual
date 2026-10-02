@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VELA en vivo</title>
+<style>
+  :root {
+    --bg: #070d18; --panel: #0d1626; --panel-2: #111d31; --line: #1c2a40; --text: #e6eef8;
+    --muted: #7d8fa9; --green: #19da91; --red: #ff536f; --doji: #d6deeb; --accent: #7aa2ff; --gold: #ffcf5c;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; background: var(--bg); color: var(--text);
+    font: 14px/1.45 "Segoe UI", system-ui, sans-serif; }
+  .app { display: grid; grid-template-rows: auto 1fr; height: 100vh; }
+  header { display: flex; align-items: center; gap: 18px; padding: 12px 20px; border-bottom: 1px solid var(--line);
+    background: linear-gradient(90deg, #0b1424, #0a1120); }
+  .logo { font-weight: 800; letter-spacing: .5px; font-size: 18px; }
+  .logo span { color: var(--green); }
+  .ticker { font-family: Consolas, monospace; display: flex; gap: 14px; align-items: baseline; }
+  .ticker b { font-size: 20px; }
+  .up { color: var(--green); } .down { color: var(--red); }
+  .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--red); display: inline-block; margin-right: 6px; }
+  .dot.on { background: var(--green); box-shadow: 0 0 10px var(--green); }
+  .spacer { flex: 1; }
+  .pill { padding: 4px 10px; border: 1px solid var(--line); border-radius: 99px; color: var(--muted); font-size: 12px; }
+  main { display: grid; grid-template-columns: 1fr 400px; min-height: 0; }
+  .chartwrap { display: grid; grid-template-rows: 1fr auto; min-height: 0; border-right: 1px solid var(--line); }
+  #chart { min-height: 0; }
+  .tape { display: flex; gap: 6px; padding: 10px 14px; overflow: hidden; border-top: 1px solid var(--line);
+    background: var(--panel); height: 52px; align-items: center; }
+  .tape .lbl { color: var(--muted); font-size: 12px; white-space: nowrap; margin-right: 6px; }
+  .chip { font-family: Consolas, monospace; font-size: 12px; padding: 4px 8px; border-radius: 6px; white-space: nowrap;
+    background: var(--panel-2); border: 1px solid var(--line); animation: pop .35s ease-out; }
+  .chip.frame { border-color: var(--gold); color: var(--gold); }
+  .chip.txt { color: #ffb4c4; } .chip.num { color: #9fe8ff; } .chip.control { color: var(--doji); border-color: #3a4a63; }
+  .chip.ruido { color: #3d4d66; }
+  .chip.crc { color: var(--accent); }
+  @keyframes pop { from { transform: translateY(8px); opacity: 0; } to { transform: none; opacity: 1; } }
+  aside { overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 16px; }
+  section { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 14px; }
+  h2 { margin: 0 0 10px; font-size: 13px; text-transform: uppercase; letter-spacing: 1.2px; color: var(--muted); }
+  textarea { width: 100%; min-height: 96px; resize: vertical; background: #08101d; color: var(--text);
+    border: 1px solid var(--line); border-radius: 8px; padding: 10px; font: 13px/1.4 Consolas, monospace; }
+  .row { display: flex; gap: 8px; align-items: center; margin-top: 10px; flex-wrap: wrap; }
+  .seg { display: inline-flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+  .seg button { background: none; border: 0; color: var(--muted); padding: 6px 12px; cursor: pointer; font: inherit; }
+  .seg button.on { background: var(--panel-2); color: var(--text); }
+  .send { margin-left: auto; background: var(--green); color: #04150d; border: 0; border-radius: 8px;
+    padding: 8px 16px; font-weight: 700; cursor: pointer; }
+  .send:disabled { opacity: .5; cursor: wait; }
+  .bar { height: 4px; background: var(--line); border-radius: 4px; overflow: hidden; margin-top: 10px; }
+  .bar i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--green), var(--accent));
+    transition: width .9s linear; }
+  .note { color: var(--muted); font-size: 12px; margin-top: 8px; min-height: 1.4em; }
+  .status { display: flex; justify-content: space-between; font-size: 13px; }
+  .status b { font-family: Consolas, monospace; }
+  .msg { border: 1px solid var(--line); border-radius: 10px; padding: 12px; background: var(--panel-2); animation: pop .4s; }
+  .msg .meta { display: flex; justify-content: space-between; color: var(--muted); font-size: 12px; }
+  .msg .ok { color: var(--green); } .msg .bad { color: var(--red); }
+  .msg .out { white-space: pre-wrap; font-size: 17px; margin: 8px 0; font-weight: 600; }
+  .msg details { color: var(--muted); font-size: 12px; }
+  .msg pre { white-space: pre-wrap; background: #08101d; padding: 8px; border-radius: 6px; margin: 6px 0 0;
+    font: 12px/1.4 Consolas, monospace; color: #c9d6ea; max-height: 220px; overflow: auto; }
+  .empty { color: var(--muted); font-size: 13px; }
+  @media (max-width: 900px) {
+    main { grid-template-columns: 1fr; grid-template-rows: 55vh auto; }
+    .chartwrap { border-right: 0; } aside { overflow: visible; }
+    header { flex-wrap: wrap; padding: 10px 16px; }
+  }
+</style>
+</head>
+<body>
+<div class="app">
+  <header>
+    <div class="logo">Candle<span>Lab</span> · VELA en vivo</div>
+    <div class="ticker">VELA/USD <b id="price">—</b> <span id="change"></span></div>
+    <div class="spacer"></div>
+    <span class="pill" id="queue">cola: 0</span>
+    <span class="pill"><span class="dot" id="dot"></span><span id="conn">conectando…</span></span>
+  </header>
+  <main>
+    <div class="chartwrap">
+      <div id="chart"></div>
+      <div class="tape" id="tape"><span class="lbl">Lectura en directo ›</span></div>
+    </div>
+    <aside>
+      <section>
+        <h2>Transmitir</h2>
+        <textarea id="text" placeholder="Escribe un mensaje…">¡Hola! Este mensaje viaja dentro de las velas 🕯️</textarea>
+        <div class="row">
+          <div class="seg"><button class="on" data-mode="mensaje">Mensaje</button><button data-mode="programa">Programa</button></div>
+          <button class="send" id="send">Emitir velas</button>
+        </div>
+        <div class="bar"><i id="progress"></i></div>
+        <div class="note" id="note"></div>
+      </section>
+      <section>
+        <h2>Receptor</h2>
+        <div class="status"><span id="rxstate">Esperando la vela ⟦ de inicio…</span><b id="rxcount"></b></div>
+        <div class="note">Este receptor solo recibe precios OHLC. Reconstruye el programa leyendo cuerpo, mechas y color.</div>
+      </section>
+      <section>
+        <h2>Mensajes recibidos</h2>
+        <div id="inbox"><div class="empty">Todavía no ha llegado ninguna trama.</div></div>
+      </section>
+    </aside>
+  </main>
+</div>
+<script src="lightweight-charts.js"></script>
+<script src="vela.js"></script>
+<script>
+(() => {
+  const BASE = 1000, TICK = 0.25;
+  const $ = (id) => document.getElementById(id);
+  const css = getComputedStyle(document.documentElement);
+  const C = (n) => css.getPropertyValue(n).trim();
+  const chart = LightweightCharts.createChart($("chart"), {
+    autoSize: true,
+    layout: { background: { color: C("--bg") }, textColor: C("--muted"), fontFamily: "Segoe UI, system-ui" },
+    grid: { vertLines: { color: "#111c2e" }, horzLines: { color: "#111c2e" } },
+    rightPriceScale: { borderColor: C("--line") },
+    timeScale: { borderColor: C("--line"), timeVisible: true, rightOffset: 6, barSpacing: 12 },
+    crosshair: { mode: 0 },
+  });
+  const series = chart.addCandlestickSeries({
+    upColor: C("--green"), downColor: C("--red"), wickUpColor: C("--green"), wickDownColor: C("--red"),
+    borderVisible: false, priceFormat: { type: "price", precision: 2, minMove: 0.25 },
+  });
+  const markers = [];
+  const labeler = new Vela.Labeler(), receiver = new Vela.Receiver();
+  let first = null, live = false, mode = "mensaje";
+
+  const style = (bar) => (bar.open === bar.close ? { ...bar, color: C("--doji"), wickColor: C("--doji") } : bar);
+
+  function chip(label) {
+    const tape = $("tape"), el = document.createElement("span");
+    el.className = "chip " + label.role.replace(/[^a-z]/g, "");
+    el.textContent = label.text;
+    tape.appendChild(el);
+    while (tape.children.length > 60) tape.removeChild(tape.children[1]);
+  }
+
+  function addMessage(result, time) {
+    const inbox = $("inbox");
+    if (inbox.querySelector(".empty")) inbox.innerHTML = "";
+    const box = document.createElement("div");
+    box.className = "msg";
+    const clock = new Date().toLocaleTimeString();
+    if (result.state === "error") {
+      box.innerHTML = `<div class="meta"><span class="bad">✗ Trama dañada</span><span>${clock}</span></div>`;
+      box.append(Object.assign(document.createElement("div"), { className: "note", textContent: result.error }));
+    } else {
+      let output, code;
+      try {
+        const instrs = Vela.decode(result.candles);
+        code = Vela.disassemble(instrs);
+        output = Vela.run(instrs).output.trimEnd() || "(sin salida)";
+      } catch (e) { output = "Error: " + e.message; }
+      box.innerHTML = `<div class="meta"><span class="ok">✓ CRC correcto · ${result.candles.length} velas</span><span>${clock}</span></div>
+        <div class="out"></div><details><summary>Programa reconstruido</summary><pre></pre></details>`;
+      box.querySelector(".out").textContent = output;
+      box.querySelector("pre").textContent = code || "";
+    }
+    inbox.prepend(box);
+    markers.push({ time, position: "aboveBar", color: result.state === "error" ? C("--red") : C("--gold"),
+      shape: "arrowDown", text: result.state === "error" ? "✗" : "✓ mensaje" });
+    series.setMarkers(markers.slice(-40));
+  }
+
+  function read(bar, animate) {
+    const u = ["open", "high", "low", "close"].map((k) => Math.round((bar[k] - BASE) / TICK));
+    let s;
+    try { s = Vela.signature(...u); } catch (e) { return; }
+    const label = labeler.next(s);
+    if (animate) chip(label);
+    const r = receiver.push(s);
+    if (!r) { $("rxstate").textContent = "Esperando la vela ⟦ de inicio…"; $("rxcount").textContent = ""; return; }
+    if (r.state === "inicio") {
+      $("rxstate").textContent = "⟦ Trama detectada, leyendo…"; $("rxcount").textContent = "1 vela";
+      markers.push({ time: bar.time, position: "belowBar", color: C("--gold"), shape: "arrowUp", text: "⟦" });
+      series.setMarkers(markers.slice(-40));
+    } else if (r.state === "recibiendo") {
+      $("rxcount").textContent = r.count + " velas";
+    } else {
+      $("rxstate").textContent = r.state === "trama" ? "✓ Trama completa" : "✗ Trama rechazada";
+      addMessage(r, bar.time);
+    }
+  }
+
+  function ticker(bar) {
+    $("price").textContent = bar.close.toFixed(2);
+    if (first === null) first = bar.open;
+    const ch = ((bar.close - first) / first) * 100;
+    $("change").textContent = (ch >= 0 ? "+" : "") + ch.toFixed(2) + "%";
+    $("change").className = ch >= 0 ? "up" : "down";
+  }
+
+  function connect() {
+    const es = new EventSource("flujo");
+    es.addEventListener("historia", (e) => {
+      const bars = JSON.parse(e.data);
+      series.setData(bars.map(style));
+      bars.forEach((b) => read(b, false));
+      if (bars.length) ticker(bars[bars.length - 1]);
+      chart.timeScale().scrollToRealTime();
+    });
+    es.onmessage = (e) => {
+      const bar = JSON.parse(e.data);
+      series.update(style(bar));
+      ticker(bar);
+      read(bar, true);
+    };
+    es.onopen = () => { live = true; $("dot").classList.add("on"); $("conn").textContent = "en directo"; };
+    es.onerror = () => { $("dot").classList.remove("on"); $("conn").textContent = "reconectando…"; };
+  }
+
+  document.querySelectorAll(".seg button").forEach((b) => b.onclick = () => {
+    document.querySelectorAll(".seg button").forEach((x) => x.classList.toggle("on", x === b));
+    mode = b.dataset.mode;
+    if (mode === "programa" && !$("text").value.includes("mostrar"))
+      $("text").value = '5 veces\n    "Vela " indice 1 + une mostrar\nfin';
+  });
+
+  let timer = null;
+  $("send").onclick = async () => {
+    $("send").disabled = true;
+    try {
+      const res = await fetch("enviar", { method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ texto: $("text").value, modo: mode }) });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error);
+      $("note").textContent = `${data.velas} velas en cola · llegarán en ~${Math.ceil(data.segundos)} s`;
+      const end = Date.now() + data.segundos * 1000, total = data.segundos * 1000;
+      clearInterval(timer);
+      timer = setInterval(() => {
+        const left = end - Date.now();
+        $("progress").style.width = Math.min(100, 100 - (left / total) * 100) + "%";
+        if (left <= 0) { clearInterval(timer); $("note").textContent = "Transmisión completada."; }
+      }, 500);
+    } catch (e) { $("note").textContent = "✗ " + e.message; }
+    $("send").disabled = false;
+  };
+
+  setInterval(async () => {
+    try { const s = await (await fetch("estado")).json(); $("queue").textContent = "cola: " + s.cola; } catch (e) {}
+  }, 2000);
+  connect();
+})();
+</script>
+</body>
+</html>

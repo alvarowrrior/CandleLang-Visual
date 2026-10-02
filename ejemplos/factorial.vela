@@ -1,0 +1,13 @@
+# Funciones y recursión: n factorial deja n! en la pila
+define factorial
+    dup 1 <= si
+        quita 1 retorna
+    fin
+    dup 1 - factorial *
+fin
+
+1 =i
+10 veces
+    i escribe "! = " escribe i factorial mostrar
+    i 1 + =i
+fin

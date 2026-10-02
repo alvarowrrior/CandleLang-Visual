@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="850" height="330" viewBox="0 0 850 330" data-protocol="VELA1">
+<rect x="0" y="0" width="850" height="330" fill="#0b1320"/>
+<g id="rejilla">
+<line x1="28" x2="822" y1="36" y2="36" stroke="#182436"/>
+<line x1="28" x2="822" y1="84" y2="84" stroke="#182436"/>
+<line x1="28" x2="822" y1="132" y2="132" stroke="#182436"/>
+<line x1="28" x2="822" y1="180" y2="180" stroke="#182436"/>
+<line x1="28" x2="822" y1="228" y2="228" stroke="#182436"/>
+<line x1="28" x2="822" y1="276" y2="276" stroke="#182436"/>
+</g><g id="velas">
+<line x1="47" x2="47" y1="246" y2="294" stroke="#19da91" stroke-width="1.5"/>
+<rect x="43" y="264" width="9" height="12" fill="#19da91" rx="1"/>
+<line x1="61" x2="61" y1="258" y2="264" stroke="#19da91" stroke-width="1.5"/>
+<rect x="57" y="258" width="9" height="6" fill="#19da91" rx="1"/>
+<line x1="75" x2="75" y1="240" y2="258" stroke="#d6deeb" stroke-width="1.5"/>
+<rect x="71" y="257" width="9" height="2" fill="#d6deeb"/>
+<line x1="89" x2="89" y1="252" y2="264" stroke="#ff536f" stroke-width="1.5"/>
+<rect x="85" y="258" width="9" height="6" fill="#ff536f" rx="1"/>
+<line x1="103" x2="103" y1="252" y2="264" stroke="#19da91" stroke-width="1.5"/>
+<rect x="99" y="252" width="9" height="12" fill="#19da91" rx="1"/>
+<line x1="117" x2="117" y1="222" y2="258" stroke="#19da91" stroke-width="1.5"/>
+<rect x="113" y="222" width="9" height="30" fill="#19da91" rx="1"/>
+<line x1="131" x2="131" y1="222" y2="234" stroke="#d6deeb" stroke-width="1.5"/>
+<rect x="127" y="221" width="9" height="2" fill="#d6deeb"/>
+<line x1="145" x2="145" y1="216" y2="234" stroke="#ff536f" stroke-width="1.5"/>
+<rect x="141" y="222" width="9" height="12" fill="#ff536f" rx="1"/>
+<line x1="159" x2="159" y1="222" y2="234" stroke="#19da91" stroke-width="1.5"/>
+<rect x="155" y="222" width="9" height="12" fill="#19da91" rx="1"/>
+<line x1="173" x2="173" y1="222" y2="240" stroke="#d6deeb" stroke-width="1.5"/>
+<rect x="169" y="221" width="9" height="2" fill="#d6deeb"/>
+<line x1="187" x2="187" y1="210" y2="222" stroke="#d6deeb" stroke-width="1.5"/>
+<rect x="183" y="221" width="9" height="2" fill="#d6deeb"/>
+<line x1="201" x2="201" y1="216" y2="228" stroke="#ff536f" stroke-width="1.5"/>
+<rect x="197" y="222" width="9" height="6" fill="#ff536f" rx="1"/>
+<line x1="215" x2="215" y1="216" y2="228" stroke="#19da91" stroke-width="1.5"/>
+<rect x="211" y="216" width="9" height="12" fill="#19da91" rx="1"/>
+<line x1="229" x2="229" y1="198" y2="216" stroke="#19da91" stroke-width="1.5"/>
+<rect x="225" y="204" width="9" height="12" fill="#19da91" rx="1"/>
+<line x1="243" x2="243" y1="198" y2="204" stroke="#19da91" stroke-width="1.5"/>
+<rect x="239" y="198" width="9" height="6" fill="#19da91" rx="1"/>
+<line x1="257" x2="257" y1="192" y2="210" stroke="#ff536f" stroke-width="1.5"/>
+<rect x="253" y="198" width="9" height="6" fill="#ff536f" rx="1"/>
+<line x1="271" x2="271" y1="180" y2="204" stroke="#19da91" stroke-width="1.5"/>
+<rect x="267" y="186" width="9" height="18" fill="#19da91" rx="1"/>
+<line x1="285" x2="285" y1="174" y2="186" stroke="#d6deeb" stroke-width="1.5"/>
+<rect x="281" y="185" width="9" height="2" fill="#d6deeb"/>
+<line x1="299" x2="299" y1="174" y2="186" stroke="#19da91" stroke-width="1.5"/>
+<rect x="295" y="174" width="9" height="12" fill="#19da91" rx="1"/>
+<line x1="313" x2="313" y1="168" y2="174" stroke="#19da91" stroke-width="1.5"/>
+<rect x="309" y="168" width="9" height="6" fill="#19da91" rx="1"/>
+<line x1="327" x2="327" y1="156" y2="174" stroke="#19da91" stroke-width="1.5"/>
+<rect x="323" y="162" width="9" height="6" fill="#19da91" rx="1"/>
+<line x1="341" x2="341" y1="150" y2="162" stroke="#19da91" stroke-width="1.5"/>
+<rect x="337" y="150" width="9" height="12" fill="#19da91" rx="1"/>
+<line x1="355" x2="355" y1="150" y2="156" stroke="#ff536f" stroke-width="1.5"/>
+<rect x="351" y="150" width="9" height="6" fill="#ff536f" rx="1"/>
+<line x1="369" x2="369" y1="144" y2="162" stroke="#d6deeb" stroke-width="1.5"/>
+<rect x="365" y="155" width="9" height="2" fill="#d6deeb"/>
+<line x1="383" x2="383" y1="150" y2="156" stroke="#19da91" stroke-width="1.5"/>
+<rect x="379" y="150" width="9" height="6" fill="#19da91" rx="1"/>
+<line x1="397" x2="397" y1="132" y2="156" stroke="#19da91" stroke-width="1.5"/>
+<rect x="393" y="138" width="9" height="12" fill="#19da91" rx="1"/>
+<line x1="411" x2="411" y1="126" y2="150" stroke="#19da91" stroke-width="1.5"/>
+<rect x="407" y="126" width="9" height="12" fill="#19da91" rx="1"/>
+<line x1="425" x2="425" y1="108" y2="138" stroke="#19da91" stroke-width="1.5"/>
+<rect x="421" y="120" width="9" height="6" fill="#19da91" rx="1"/>
+<line x1="439" x2="439" y1="102" y2="120" stroke="#19da91" stroke-width="1.5"/>
+<rect x="435" y="102" width="9" height="18" fill="#19da91" rx="1"/>
+<line x1="453" x2="453" y1="102" y2="114" stroke="#ff536f" stroke-width="1.5"/>
+<rect x="449" y="102" width="9" height="12" fill="#ff536f" rx="1"/>
+<line x1="467" x2="467" y1="96" y2="114" stroke="#19da91" stroke-width="1.5"/>
+<rect x="463" y="96" width="9" height="18" fill="#19da91" rx="1"/>
+<line x1="481" x2="481" y1="96" y2="102" stroke="#ff536f" stroke-width="1.5"/>
+<rect x="477" y="96" width="9" height="6" fill="#ff536f" rx="1"/>
+<line x1="495" x2="495" y1="78" y2="102" stroke="#19da91" stroke-width="1.5"/>
+<rect x="491" y="78" width="9" height="24" fill="#19da91" rx="1"/>
+<line x1="509" x2="509" y1="78" y2="162" stroke="#ff536f" stroke-width="1.5"/>
+<rect x="505" y="78" width="9" height="84" fill="#ff536f" rx="1"/>
+<line x1="523" x2="523" y1="144" y2="162" stroke="#19da91" stroke-width="1.5"/>
+<rect x="519" y="144" width="9" height="18" fill="#19da91" rx="1"/>
+<line x1="537" x2="537" y1="144" y2="150" stroke="#ff536f" stroke-width="1.5"/>
+<rect x="533" y="144" width="9" height="6" fill="#ff536f" rx="1"/>
+<line x1="551" x2="551" y1="138" y2="168" stroke="#ff536f" stroke-width="1.5"/>
+<rect x="547" y="150" width="9" height="6" fill="#ff536f" rx="1"/>
+<line x1="565" x2="565" y1="144" y2="168" stroke="#19da91" stroke-width="1.5"/>
+<rect x="561" y="144" width="9" height="12" fill="#19da91" rx="1"/>
+<line x1="579" x2="579" y1="138" y2="144" stroke="#19da91" stroke-width="1.5"/>
+<rect x="575" y="138" width="9" height="6" fill="#19da91" rx="1"/>
+<line x1="593" x2="593" y1="120" y2="144" stroke="#19da91" stroke-width="1.5"/>
+<rect x="589" y="126" width="9" height="12" fill="#19da91" rx="1"/>
+<line x1="607" x2="607" y1="120" y2="126" stroke="#19da91" stroke-width="1.5"/>
+<rect x="603" y="120" width="9" height="6" fill="#19da91" rx="1"/>
+<line x1="621" x2="621" y1="114" y2="132" stroke="#ff536f" stroke-width="1.5"/>
+<rect x="617" y="120" width="9" height="6" fill="#ff536f" rx="1"/>
+<line x1="635" x2="635" y1="120" y2="138" stroke="#19da91" stroke-width="1.5"/>
+<rect x="631" y="120" width="9" height="6" fill="#19da91" rx="1"/>
+<line x1="649" x2="649" y1="114" y2="120" stroke="#19da91" stroke-width="1.5"/>
+<rect x="645" y="114" width="9" height="6" fill="#19da91" rx="1"/>
+<line x1="663" x2="663" y1="96" y2="120" stroke="#19da91" stroke-width="1.5"/>
+<rect x="659" y="102" width="9" height="12" fill="#19da91" rx="1"/>
+<line x1="677" x2="677" y1="90" y2="102" stroke="#19da91" stroke-width="1.5"/>
+<rect x="673" y="90" width="9" height="12" fill="#19da91" rx="1"/>
+<line x1="691" x2="691" y1="78" y2="90" stroke="#19da91" stroke-width="1.5"/>
+<rect x="687" y="84" width="9" height="6" fill="#19da91" rx="1"/>
+<line x1="705" x2="705" y1="78" y2="84" stroke="#19da91" stroke-width="1.5"/>
+<rect x="701" y="78" width="9" height="6" fill="#19da91" rx="1"/>
+<line x1="719" x2="719" y1="66" y2="84" stroke="#19da91" stroke-width="1.5"/>
+<rect x="715" y="72" width="9" height="6" fill="#19da91" rx="1"/>
+<line x1="733" x2="733" y1="60" y2="72" stroke="#d6deeb" stroke-width="1.5"/>
+<rect x="729" y="71" width="9" height="2" fill="#d6deeb"/>
+<line x1="747" x2="747" y1="54" y2="102" stroke="#ff536f" stroke-width="1.5"/>
+<rect x="743" y="72" width="9" height="12" fill="#ff536f" rx="1"/>
+<line x1="761" x2="761" y1="36" y2="84" stroke="#19da91" stroke-width="1.5"/>
+<rect x="757" y="36" width="9" height="48" fill="#19da91" rx="1"/>
+<line x1="775" x2="775" y1="36" y2="72" stroke="#ff536f" stroke-width="1.5"/>
+<rect x="771" y="36" width="9" height="36" fill="#ff536f" rx="1"/>
+<line x1="789" x2="789" y1="54" y2="72" stroke="#19da91" stroke-width="1.5"/>
+<rect x="785" y="54" width="9" height="18" fill="#19da91" rx="1"/>
+<line x1="803" x2="803" y1="54" y2="150" stroke="#ff536f" stroke-width="1.5"/>
+<rect x="799" y="54" width="9" height="96" fill="#ff536f" rx="1"/>
+</g>
+<text x="28" y="22" font-family="Consolas, monospace" font-size="12" fill="#607492">VELA1 · 55 velas</text></svg>

@@ -1,0 +1,8 @@
+# Tira tres dados (aleatorio n → 0..n-1)
+0 =total
+3 veces
+    6 aleatorio 1 + dup =tirada
+    "Dado " indice 1 + une ": " une cambia une mostrar
+    total tirada + =total
+fin
+"Total: " total une mostrar

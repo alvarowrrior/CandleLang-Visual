@@ -1,0 +1,10 @@
+# Serie de Fibonacci menor que 1000 con un bucle mientras
+0 =a
+1 =b
+mientras a 1000 < hacer
+    a escribe " " escribe
+    a b + =siguiente
+    b =a
+    siguiente =b
+fin
+salto

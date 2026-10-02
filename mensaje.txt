@@ -1,0 +1,1 @@
+Hola, mundo. ¡Este mensaje viaja en hexadecimal! 📈
